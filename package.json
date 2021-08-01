@@ -9,9 +9,15 @@
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3"
   },
+  "devDependencies": {
+    "autoprefixer": "^10.3.1",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.7"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:css": "postcss src/tailwind.css -o src/style.css",
     "server": "json-server db.json --watch --port=8000"
   },
   "browserslist": {
