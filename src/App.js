@@ -1,22 +1,50 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import './style.css'
+import Expenses from "./components/Expenses/Expenses"
+import NewExpense from './components/NewExpense/NewExpense';
+
+const DUMMY_EXPENSES = [
+    {
+        id: 'e1',
+        title: 'Toilet Paper',
+        amount: 94.12,
+        date: new Date(2020, 7, 14),
+    },
+    {
+        id: 'e2',
+        title: 'New TV', 
+        amount: 799.49, 
+        date: new Date(2021, 2, 12)
+    },
+    {
+        id: 'e3',
+        title: 'Car Insurance',
+        amount: 294.67,
+        date: new Date(2021, 2, 28),
+    },
+    {
+        id: 'e4',
+        title: 'New Desk (Wooden)',
+        amount: 450,
+        date: new Date(2021, 5, 12),
+    },
+];
 
 const App = () => {
+    const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+
+    const addExpenseHandler = expense => {
+        setExpenses((prevExpenses)=>{
+            console.log([expense, ...prevExpenses]);
+            return [expense, ...prevExpenses];
+        })
+    }
+
     return (
         <>
-            <ul class="grid grid-cols-10 h-7">
-                <li class="bg-pink-50"></li>
-                <li class="bg-pink-100"></li>
-                <li class="bg-pink-200"></li>
-                <li class="bg-pink-300"></li>
-                <li class="bg-pink-400"></li>
-                <li class="bg-pink-500"></li>
-                <li class="bg-pink-600"></li>
-                <li class="bg-pink-700"></li>
-                <li class="bg-pink-800"></li>
-                <li class="bg-pink-900"></li>
-            </ul>
+            <NewExpense onAddExpense={addExpenseHandler} />
+            <Expenses items={expenses} />
         </>
     )
 }
