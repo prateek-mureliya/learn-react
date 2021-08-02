@@ -15,7 +15,7 @@
     "tailwindcss": "^2.2.7"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run build:css && react-scripts start",
     "build": "react-scripts build",
     "build:css": "postcss src/tailwind.css -o src/style.css",
     "server": "json-server db.json --watch --port=8000"
